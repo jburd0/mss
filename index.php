@@ -15,10 +15,13 @@ include "header.php";
 				//make empty boxes for images
 				$file = "./items/images.php";
 				$lineCount = count(file($file));
+				if($lineCount[1] == '') {
+					$lineCount--;
+				}
 				if ($lineCount <= 15) {		
 					$blankImg = $lineCount;
 					for ($x = $blankImg; $x < 16; $x++) {
-						echo "<img class=\"mainimgads\" > ";
+						echo "<div id=\"imgHold\"><img class=\"mainimgads\" src=\"\"></div> ";
 					}
 				}
 				?>		
@@ -57,7 +60,6 @@ include "header.php";
 }
 </style>
 <script src="./js/imagePreview.js"></script>
-<script src="./js/imageHover.js"></script>
 <?php
 include "footer.php";
 ?>

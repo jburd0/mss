@@ -1,6 +1,7 @@
 <?php
 include "header.php";
 ?>
+<script src="./js/tabs.js"></script>
 <?php
 session_start();
 if(!$_SESSION['username']) {
@@ -8,61 +9,6 @@ if(!$_SESSION['username']) {
 } else {
 }
 ?>
-<style type="text/css">
-#adminMenu {
-	float: left;
-	height:400px;
-	margin: 0px;
-	background-color: #CEE3F6;
-	text-align: center;
-}
-ul.adminul {
-	list-style-type: none;
-	margin: 0px;
-}
-li.adminli {	
-	text-align: center;
-	padding: 50px 1px;
-	border-radius: 10px 0px 0px 10px;
-	border-right: 2px solid #E6E6E6;
-}
-li.adminli:hover {
-	background-color: #fafafa;
-	border-right: 2px solid #FE2E2E;
-}
-a.admina {
-	padding: 50px 5px;
-	text-decoration: none;
-	color: #FA5858;
-}
-a.admina:hover, .active {
-	font-weight: 900;
-	color: #D32F2F !important;
-	text-decoration: underline !important;
-}
-#tabDelete {
-	height: 800px;
-}
-#tabDelete > .mainimgads {
-
-}
-</style>
-<script>
-$(document).ready(function() {
-	$('.admina').click(function() {
-		var $this = $(this);
-		//hide tabs
-		$('.tab').hide();
-		$('.active').removeClass('active');
-		$this.addClass('active');
-                var tab = $this.attr('href');
-		// show panel
-                $(tab).show();
-		return (false);
-	}); // end click
-	$('.adminli:first .admina').click();
-}); //end ready function
-</script>
 <body>
 	<div id="conholder">
 		<div id="uploadbox">
@@ -77,10 +23,12 @@ $(document).ready(function() {
                                 <h4 class="texth4"><?php echo $uploadstatus; ?></h4>
                                 <form class="adform" method="POST" action="<?php $_SERVER['SELF_PHP']; ?>" enctype="multipart/form-data">
 					<h1 class="texth1">Choose File</h1>
-                                        <input class="imginput" type="file" name="file">
-                                        <input class="adsubmit" type="submit" value="Upload">
+					<input class="imginput" type="file" value="Choose File" name="file"><br />
+					<input  type="textarea" placeholder="Caption" name="caption">
+					<input class="adsubmit" type="submit" value="Upload">
                                 </form>
         	        	<?php
+				$captionText = $_POST['caption']; 
 				$filen = $_FILES['file']['name'];
 				$filet = $_FILES['file']['type'];
 				$files = $_FILES['file']['size'];
@@ -96,7 +44,7 @@ $(document).ready(function() {
 							$file = "./items/images.php";
 							move_uploaded_file($filetmp, $location."$timestamp.$extention");
 							//write image information to /items/info.php
-							$filecon = "<img class=\"mainimgads\"  src=\"./items/$timestamp.$extention\" alt=\"Image preview\" title=\"test\">\n";
+							$filecon = "<div id=\"imgHold\"><img class=\"mainimgads\"  src=\"./items/$timestamp.$extention\" alt=\"Image preview\" title=\"$captionText\"></div>\n";
 							//read /items/info.php
 							$filecon .= file_get_contents($file);
 							//write $filecon to ./items/images.php
@@ -112,10 +60,37 @@ $(document).ready(function() {
 				?>        
 			</div>
 			<div id="tabDelete" class="tab">
-				<?php 
-				include "./items/images.php";
+				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+					<input type="hidden" name="image">
+					<div id="deleteImg">
+						<?php
+						include "./items/images.php";
+						?>
+					</div>
+					<script src="./js/imageSelect.js"></script>
+					<div id="selected">
+					</div>
+                                        <input class="adsubmit" type="submit" value="Delete">
+				</form>
+				<?php
+				$delImg = $_POST['img'];
+				$delCaption = $_POST['cap'];
+				$file = "./items/images.php";
+				foreach (array_combine($delImg, $delCaption) as $img => $caption) {
+					$filedata= file_get_contents($file);
+					//get line to delete out of ./items/images.php
+					$line  = "<div id=\"imgHold\"><img class=\"mainimgads\"  src=\"$img\" alt=\"Image preview\" title=\"$caption\"></div>";
+					//replace $line and replace with \n
+					$filedata = str_replace($line, "\n", $filedata);
+					//delete blank lines
+					$filedata = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $filedata);
+					//write $filedata to ./items/images.php
+					file_put_contents($file, $filedata);
+					//delete image off server 
+					unlink($img);
+				}
 				?>
-				<p> <font color="red" size="28px">&#10003</font></p>
+	
 			</div>
 
 		</div>

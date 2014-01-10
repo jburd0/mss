@@ -1,0 +1,254 @@
+body, html {
+	-webkit-font-smoothing: antialiased;
+	font-family:  "Comic Sans MS", cursive, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+*:focus {
+	outline: none;
+	border: none;
+}
+/******************************************************
+*
+*Navagation bar
+*
+*******************************************************/
+#nav {
+	width: 100%;
+	border-top: 3px solid #FF0000;
+}
+#navbar {
+	max-width: 980px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#navbara {
+	height: 70px;
+}
+#logoslide {
+	position: absolute;
+	height: 70px;
+	width:  110px;
+	float: left;
+	background-color: #FA5858;
+	border-radius: 0px 0px 25px 25px;
+	padding: 5px 5px 12px 5px;
+	z-index: 10;
+}
+#aboutslide {
+	z-index: 10;
+	position: absolute;
+	text-align: center;
+	top: -210px;
+	left: -.5;
+	color: white;
+	width: 110px;
+	height: 200px;
+	background-color: #FA5858;
+	border: 5px solid #FA5858;
+}
+a.nava {
+	font-size: 18px;
+	outline: 0;
+	border: 0;
+	float: right;	
+	padding: 25px 35px 32px 35px;
+	color:#6E6E6E;
+	text-decoration: none;
+	border-radius: 2em;
+}
+a.nava:hover {
+	box-shadow: inset -.5px -.5px 5.5px #000000;
+}
+/*****************************************************
+*
+*footer.php
+*
+*****************************************************/
+#footer {
+	margin: 0;
+	width: 100%;
+	max-width: auto;
+	margin-right: auto;
+	margin-left: auto;
+}
+ul.footul {
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+}
+li.footli {
+}
+a.foota {
+	text-decoration: none;
+}
+a.foota:hover {
+	color: #000000;
+}
+/************
+* conholder
+**************/
+#conholder {
+	margin-right: auto;
+	margin-left: auto;
+	width: 980px;
+	max-width: 100%;
+	height: auto;
+	padding: 3em 0 2em 0;
+}
+/******************************************************
+*
+*index.php
+*
+******************************************************/
+#conmain {
+	width: 100%;
+	height: 475px;
+	border: 1.5px solid #D8D8D8;
+}
+#mainadtext {
+	width: 40%;
+	float: left;
+	padding: 0 2.5em 1.6em 1.6em;
+}
+h1.adtexth1 {
+	line-height: 30px;
+	padding: 0;
+	color: #58D3F7;
+	font-weight: 400;
+	text-align:  left;
+}
+h4.adtexth4 {
+	color: #585858;
+	font-weight: 400;
+}
+#adblock {
+	width: 44%;
+	padding: 1.8em;
+	float: left;
+}
+.mainimgads {
+	width: 100px;	
+	height: 100px;
+	background-color: #BCF5A9;
+	border-radius: 5px;
+	position: relative;
+}
+img.mainimgads:hover {
+	box-shadow: inset 0 0 10px #000000;
+	opacity: .7;
+	cursor: pointer;
+}
+#preview{
+	float: right;
+	border:3px solid #ccc;
+	background:#333;
+	padding:5px;
+	display:none;
+	color:blue;
+	box-shadow: 4px 4px 3px rgba(103, 115, 130, 1);
+	z-index: 10;
+}
+#consub {
+	padding: 2em 1em 15em 1em;
+}
+#subcontent {
+	background-color: white;
+	border: 1.5px solid #D8D8D8;
+	width: 33%;
+	height: 200px;
+	float: left;
+}
+#conbackgroundcolor {
+	background-color: #04B404;
+}
+/**************************************************************
+*
+*upload.php
+*
+**************************************************************/
+#loginbox {
+	width: 100%;
+	max-width: 380px;
+	height: 460px;
+	margin-right: auto;
+	margin-left: auto;
+	box-shadow: 0px 0px 15px rgb(0,0,0);
+	text-align: center;
+}
+h1.texth1 {
+	font-family: Parkavenue, cursive;
+	color: #FE2E2E;
+	font-weight: 600;
+	font-size: 36px;
+}
+#front {
+    	top: 0;
+    	z-index: 900;
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 1.5em 2em;
+}
+form.adform {
+	text-align: center;
+}
+input.adinput {
+	border-radius: 5px;
+	border: 1px solid #a4a4a4;
+	width: 100%;
+	padding: 1em;
+	font-size: 16px;
+	margin-bottom: 2.5%;
+}
+input.adinput:focus {
+	box-shadow: inset 0 0 8px #6E6E6E;
+	color: #6E6E6E;
+}
+input.adsubmit {
+	margin-top: 5%;
+	border-radius: 15px;
+	padding: 20px 50px;
+	border: none;
+	box-shadow: 0 0 10px #A4A4A4;
+	font-size: 28px;
+	font-family: Parkavenue, cursive;
+}
+input.adsubmit:hover {
+	cursor: pointer;
+	box-shadow: inset 0 0 15px #A4A4A4;
+}
+p.loginStatus {
+	height: 25px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	background-color:rgb(254, 46, 46);
+	color: white;
+}
+/**********************************************
+*
+*choseimg.php
+*
+************************************************/
+#uploadbox {
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+        background-color: #FAFAFA;
+        border: 2px solid #A4A4A4;
+        box-shadow: 0px 0px 15px rgb(0,0,0);
+        height: 400px;
+}
+#uploadcon {
+        max-width: 580px;
+        width: 75%;
+        padding: 1em 2em;
+        float: right;
+}
+input.imginput {
+        border: none;
+        padding: 10px;
+}
+
+

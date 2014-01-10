@@ -1,0 +1,44 @@
+/* Background Color */
+body, html {
+        background-color: #FBF8EF;
+}
+/* Selector Color */
+*::selection {
+        background-color: #A9E2F3;
+        color: white;
+}
+*::-moz-selection {
+        background-color: #A9E2F3;
+        color: white;
+}
+/* Nav Button Colors */
+a.nava { 
+	color:#6E6E6E;
+	background-color: #F6E3CE;
+	border: 5px solid #FBF8EF;
+}
+a.nava:hover {
+	background-color: #EFD6BB;
+}
+/* Foot Font Color */
+a.foota {
+	color: #6E6E6E;
+}
+/* Background Color for Images and Text */
+#conmain {
+	background-color: white;
+}
+/* Login Box Colors */
+#loginbox {
+	background-color: #FAFAFA;
+	border: 2px solid #A4A4A4;
+}
+/* Submit Buttons */
+input.adsubmit {
+	background-color: #A9E2F3;
+	color: #FE2E2E;
+}
+/*Main Logo slide funciton */
+h1.mainlogo {
+	color: white;
+}

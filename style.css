@@ -30,7 +30,6 @@ body, html {
 	height: 70px;
 	width:  110px;
 	float: left;
-	background-color: #FA5858;
 	border-radius: 0px 0px 25px 25px;
 	padding: 5px 5px 12px 5px;
 	z-index: 10;
@@ -41,11 +40,11 @@ body, html {
 	text-align: center;
 	top: -210px;
 	left: -.5;
-	color: white;
 	width: 110px;
 	height: 200px;
-	background-color: #FA5858;
-	border: 5px solid #FA5858;
+}
+.mainlogo {
+	font-size: 28px;
 }
 a.nava {
 	font-size: 18px;
@@ -53,12 +52,13 @@ a.nava {
 	border: 0;
 	float: right;	
 	padding: 25px 35px 32px 35px;
-	color:#6E6E6E;
 	text-decoration: none;
 	border-radius: 2em;
 }
 a.nava:hover {
 	box-shadow: inset -.5px -.5px 5.5px #000000;
+	-moz-box-shadow: inset  -.5px -.5px 5.5px #000000;
+	-webkit-box-shadow: inset -.5px -.5px 5.5px #000000;
 }
 /*****************************************************
 *
@@ -68,9 +68,9 @@ a.nava:hover {
 #footer {
 	margin: 0;
 	width: 100%;
-	max-width: auto;
 	margin-right: auto;
 	margin-left: auto;
+	padding-top: 15px;
 }
 ul.footul {
 	padding: 0;
@@ -81,9 +81,6 @@ li.footli {
 }
 a.foota {
 	text-decoration: none;
-}
-a.foota:hover {
-	color: #000000;
 }
 /************
 * conholder
@@ -114,12 +111,10 @@ a.foota:hover {
 h1.adtexth1 {
 	line-height: 30px;
 	padding: 0;
-	color: #58D3F7;
 	font-weight: 400;
 	text-align:  left;
 }
 h4.adtexth4 {
-	color: #585858;
 	font-weight: 400;
 }
 #adblock {
@@ -135,10 +130,11 @@ h4.adtexth4 {
 .mainimgads {
 	width: 100px;	
 	height: 100px;
-	background-color: #BCF5A9;
 	border-radius: 5px;
 }
 img.mainimgads:hover {
+        -moz-box-shadow: inset 0 0 10px #000000;
+        -webkit-box-shadow: inset 0 0 10px #000000;
 	box-shadow: inset 0 0 10px #000000;
 	opacity: .7;
 	cursor: pointer;
@@ -149,33 +145,19 @@ img.mainimgads:hover {
 	width:440px;
 	height:340px;
 }
+.caption {
+	padding: 4px;
+	position: absolute;
+	z-index: 1;
+	bottom: -10;
+	left: 2;
+}
 #photo img {
         width:100%;
-	border: 2px solid #a4a4a4;
-}
-.caption {
-	letter-spacing: -1px;
-	position: absolute;
-	padding: 10px;
-	bottom:0;
-	z-index: 1;
-	color: white;
-	background-color: rgba(0,0,0,.5);
-	background-color: rgb(0,0,0);
-	border-left: 2px solid #a4a4a4;
-}
-#consub {
-	padding: 2em 1em 15em 1em;
-}
-#subcontent {
-	background-color: white;
 	border: 1.5px solid #D8D8D8;
 	width: 33%;
 	height: 200px;
 	float: left;
-}
-#conbackgroundcolor {
-	background-color: #04B404;
 }
 /**************************************************************
 *
@@ -192,9 +174,10 @@ img.mainimgads:hover {
 	text-align: center;
 }
 h1.texth1 {
-	color: #FE2E2E;
 	font-weight: 600;
 	font-size: 36px;
+	padding: 15px;
+	line-height: 30px;
 }
 #front {
     	top: 0;
@@ -204,8 +187,9 @@ h1.texth1 {
 	margin-left: auto;
 	padding: 1.5em 2em;
 }
-form.adform {
+form.adform, .passwordForm {
 	text-align: center;
+	margin-top: -25px;
 }
 input.adinput {
 	border-radius: 5px;
@@ -216,8 +200,15 @@ input.adinput {
 	margin-bottom: 2.5%;
 }
 input.adinput:focus {
+	-moz-box-shadow: inset 0 0 8px #6E6E6E;
+        -webkit-box-shadow: inset 0 0 8px #6E6E6E;
 	box-shadow: inset 0 0 8px #6E6E6E;
-	color: #6E6E6E;
+}
+#submitHold {
+	float: right;
+	position: relative;
+	right: 17px;
+	bottom: 200px;
 }
 input.adsubmit {
 	margin-top: 5%;
@@ -230,14 +221,19 @@ input.adsubmit {
 input.adsubmit:hover {
 	cursor: pointer;
 	box-shadow: inset 0 0 15px #A4A4A4;
+	-moz-box-shadow: inset 0 0 15px #A4A4A4;
+	-webkit-box-shadow: inset 0 0 15px #A4A4A4;
 }
 p.loginStatus {
 	height: 25px;
 	position: absolute;
 	text-align: center;
 	width: 100%;
-	background-color:rgb(254, 46, 46);
-	color: white;
+	top:80px;
+}
+#previewImg {
+	height: 200;
+	padding: 5px;
 }
 /**********************************************
 *
@@ -248,7 +244,6 @@ p.loginStatus {
         margin-right: auto;
         margin-left: auto;
         width: 100%;
-        background-color: #FAFAFA;
         border: 2px solid #A4A4A4;
         box-shadow: 0px 0px 15px rgb(0,0,0);
         height: 400px;
@@ -261,7 +256,20 @@ p.loginStatus {
 }
 input.imginput {
         border: none;
-        padding: 10px;
+	position: relative;
+	top: -15;
+}
+input.captionInput {
+        border-radius: 5px;
+        border: 1px solid #a4a4a4;
+        width: 335px;
+        padding: 1em;
+        font-size: 16px;
+}
+input.captionInput:focus {
+        -moz-box-shadow: inset 0 0 8px #6E6E6E;
+        -webkit-box-shadow: inset 0 0 8px #6E6E6E;
+        box-shadow: inset 0 0 8px #6E6E6E;
 }
 /*****************
 *
@@ -272,7 +280,6 @@ input.imginput {
         float: left;
         height:400px;
         margin: 0px;
-        background-color: #CEE3F6;
         text-align: center;
 }
 ul.adminul {
@@ -286,27 +293,31 @@ li.adminli {
         border-right: 2px solid #E6E6E6;
 }
 li.adminli:hover {
-        background-color: #fafafa;
         border-right: 2px solid #FE2E2E;
 }
 a.admina {
         padding: 50px 5px; 
         text-decoration: none;
-        color: #FA5858;
 }        
 a.admina:hover, .active {
         font-weight: 900;
         color: #D32F2F !important;
         text-decoration: underline !important;
 }
-#tabDelete {
-        height: 800px;
+#tabDelete, #tabUpload {
+        width: 800px;
+	position: absolute;
+	margin-top: 1.5;
+	margin-left: 183;
 }   
 #deleteImg { 
-        float: left;
+        margin: 0;
+	float: left;
         width: 530px;
         height: 380px;
         padding: 10px;
         overflow: scroll;
         box-shadow: inset 0 0 10px #A4A4A4;
+	-moz-box-shadow: inset 0 0 10px #A4A4A4;
+	-webkit-box-shadow: inset 0 0 10px #A4A4A4;
 }

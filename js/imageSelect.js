@@ -1,7 +1,7 @@
 $(document).ready(function() {
         $('.mainimgads').toggle(
         function() {
-                $(this).css({'border':'7.5px solid green', 'width':'86px','height':'86px'});
+                $(this).css({'border':'7.5px solid red', 'width':'86px','height':'86px'});
                 var img = $(this).attr("src");
                 var cap = $(this).attr("title");
 		var imgSelect = $('<input id="input" type="hidden" value="' + img + '" name="img[]">');

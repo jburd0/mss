@@ -24,7 +24,7 @@ $(document).ready(function() {
                 oldImage.fadeOut(200,function(){
                      $(this).remove();
                 });
-		oldCaption.fadeOut(200,function(){
+		oldCaption.fadeOut(100,function(){
 			$(this).remove();
 		});
                          

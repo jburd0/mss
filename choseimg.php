@@ -2,11 +2,14 @@
 include "header.php";
 ?>
 <script src="./js/tabs.js"></script>
+<script src="./js/showUpload.js"></script>
+<!--<script src="./js/passwordCheck.js"></script>-->
 <?php
 session_start();
 if(!$_SESSION['username']) {
 	header("Location: upload.php");
 } else {
+	$postusername = $_SESSION['username'];
 }
 ?>
 <body>
@@ -19,13 +22,14 @@ if(!$_SESSION['username']) {
 					<li class="adminli"><a href="#tabSettings" class="admina" tabIndex="3">Account Settings</a></li>
 				</ul>
 			</div>
-			<div id="tabUpload" class="tab">
+			<div id="tabUpload" class="tabs">
                                 <h4 class="texth4"><?php echo $uploadstatus; ?></h4>
                                 <form class="adform" method="POST" action="<?php $_SERVER['SELF_PHP']; ?>" enctype="multipart/form-data">
 					<h1 class="texth1">Choose File</h1>
-					<input class="imginput" type="file" value="Choose File" name="file"><br />
-					<input  type="textarea" placeholder="Caption" name="caption">
-					<input class="adsubmit" type="submit" value="Upload">
+					<input class="imginput" type="file" value="Choose File" name="file" onchange="readURL(this);"><br />
+					<img id="previewImg" src="#" alt="your image"  onError="this.onerror=null;this.src='./items/noimage.png';"/><br />
+					<input class="captionInput" type="textarea" placeholder="Caption" name="caption"><br />
+					<div id="submitHold"><input class="adsubmit" type="submit" value="Upload"></div>
                                 </form>
         	        	<?php
 				$captionText = $_POST['caption']; 
@@ -50,6 +54,7 @@ if(!$_SESSION['username']) {
 							//write $filecon to ./items/images.php
 							file_put_contents($file, $filecon);
 							header("Location: index.php");
+							session_destroy();
 						} else {
 							$uploadstatus = "<font color='red'>File must be under 5mb</font>";
 						}
@@ -59,7 +64,7 @@ if(!$_SESSION['username']) {
 				}
 				?>        
 			</div>
-			<div id="tabDelete" class="tab">
+			<div id="tabDelete" class="tabs">
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 					<input type="hidden" name="image">
 					<div id="deleteImg">
@@ -88,11 +93,41 @@ if(!$_SESSION['username']) {
 					file_put_contents($file, $filedata);
 					//delete image off server 
 					unlink($img);
+					session_destroy();
 				}
 				?>
-	
 			</div>
-
+			<div id="tabSettings" class="tabs">
+				<form class="passwordForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+					<h1 class="texth1">Account Settings</h1>
+					<?php echo $passwordChange; ?>
+					<input class="captionInput" type="password" name="oldp" placeholder="Old Password"><br />
+					<input class="captionInput" type="password" name="newp" placeholder="New Password"><br />
+					<input class="captionInput" type="password" name="newpconfirm" placeholder="Retype New Password"><br />
+					<input class="adsubmit" type="submit" value="Submit">
+				</form>
+				<?php
+				$oldp = $_POST['oldp'];
+				$newp = $_POST['newp'];
+				$newpconfirm = $_POST['newpconfirm'];
+				$oldpassword = md5($oldp);
+				include_once "logininfo.php";
+				//$password is from logininfo.php
+				if ($oldpassword == $password) {
+					if($newp == $newpconfirm) {
+						$file = "./users/$postusername/password";
+						$fh = fopen($file, 'w');
+						fwrite($fh, md5($newp));
+						fclose($fh);
+						$passwordChange = "<p class=\"loginStatus\">Password changed</p>";
+						session_destroy();
+					} else {
+					}
+				} else {
+					$passwordChange = "<p class=\"loginStatus\">Old password did not match.</p>";
+				}
+				?>
+			</div>
 		</div>
 	</div>	
 <?php

@@ -2,7 +2,7 @@ $(document).ready(function() {
         $('.admina').click(function() {
                 var $this = $(this);
                 //hide tabs
-                $('.tab').hide();
+                $('.tabs').hide();
                 $('.active').removeClass('active');
                 $this.addClass('active');
                 var tab = $this.attr('href');

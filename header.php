@@ -9,7 +9,7 @@
 			<div id="logoslide">
 				<div id="aboutslide">
 				</div>
-				<h1 class="mainlogo"><i>FIXME</i></h1>
+				<h1 class="mainlogo"><i>2CanArt</i></h1>
 			</div>
 			<div id="navbara">
 				<a class="nava" href="#">Contact</a>

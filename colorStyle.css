@@ -42,3 +42,64 @@ input.adsubmit {
 h1.mainlogo {
 	color: white;
 }
+/*color of showing part of slide down*/
+#logoslide {
+	background-color: #FA5858;
+}
+/*color of slide down*/
+#aboutslide {
+	background-color: #FA5858;
+	color: white;
+	border: 5px solid #FA5858;
+}
+/*footer hover color*/
+a.foota:hover {
+        color: #000000;
+}
+/*text color of title on mainpage(Welcome)*/
+h1.adtexth1 {
+	color: #58D3F7;	
+}
+/*text color all h4 text*/
+h4.adtexth4 {
+        color: #585858;
+}
+/*background color of images*/
+.mainimgads {
+	background-color: #BCF5A9;
+}
+/*caption color for images*/
+.caption {
+	color: white;
+	background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,.5);
+}
+/*h1 color*/
+h1.texth1 {
+        color: #FE2E2E;
+}
+/*login error status text color*/
+p.loginStatus {
+	color: white;
+	background-color:rgb(254, 46, 46);
+}
+/*uploadbox color*/
+#uploadbox {
+	background-color: #FAFAFA;
+}
+/*admin menu or tabs background color*/
+#adminMenu {
+	background-color: #A9E2F3;
+}
+/*adminMenu button hover color*/
+li.adminli:hover {
+        background-color: #fafafa;
+}
+/*text color for adminMenu*/
+a.admina {
+	color: #FA5858;
+}
+/*background color of main content holder*/
+#conbackgroundcolor {
+        background-color: #04B404;
+}

@@ -21,7 +21,7 @@ include "header.php";
 				if ($lineCount <= 15) {		
 					$blankImg = $lineCount;
 					for ($x = $blankImg; $x < 16; $x++) {
-						echo "<div id=\"imgHold\"><img class=\"mainimgads\" src=\"\"></div> ";
+						echo "<div id=\"imgHold\"><img class=\"mainimgads\" src=\"\" onError\"this.onerror=null;this.src=\'./items/noimage.png\';\"></div> ";
 					}
 				}
 				?>		

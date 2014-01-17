@@ -20,6 +20,7 @@ else {
 	if (isset($postusername)) {
 		if ($username == $postusername && $password == $postpassword) {
 		session_start();
+		ob_start();
 		$_SESSION['username'] = $username;
 		header("Location: ./choseimg.php");
 		} else {
@@ -27,6 +28,7 @@ else {
 		}
 	}
 }
+echo $password;
 ?>
 <body>				
 <?php echo "$loginstatus"; ?>

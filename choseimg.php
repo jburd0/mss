@@ -6,6 +6,7 @@ include "header.php";
 <!--<script src="./js/passwordCheck.js"></script>-->
 <?php
 session_start();
+ob_start();
 if(!$_SESSION['username']) {
 	header("Location: upload.php");
 } else {

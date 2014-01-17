@@ -28,7 +28,6 @@ else {
 		}
 	}
 }
-echo $password;
 ?>
 <body>				
 <?php echo "$loginstatus"; ?>

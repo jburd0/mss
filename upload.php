@@ -1,14 +1,9 @@
 <?php
+ob_start();
+session_start();
 include "header.php";
 ?>
 <?php
-/*session_start();
-if($_SESSION['username']) {
-        header("Location: choseimg.php");
-} else {
-}*/
-#Login script
-
 $postusername = htmlentities($_POST['username']);
 $postpassword = htmlentities(md5($_POST['password']));
 
@@ -19,8 +14,6 @@ else {
 	require_once"logininfo.php";
 	if (isset($postusername)) {
 		if ($username == $postusername && $password == $postpassword) {
-		session_start();
-		ob_start();
 		$_SESSION['username'] = $username;
 		header("Location: ./choseimg.php");
 		} else {

@@ -21,6 +21,8 @@ else {
 		}
 	}
 }
+echo $username;
+echo $password;
 ?>
 <body>				
 <?php echo "$loginstatus"; ?>

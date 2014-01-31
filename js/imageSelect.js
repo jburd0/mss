@@ -2,10 +2,10 @@ $(document).ready(function() {
         $('.mainimgads').toggle(
         function() {
                 $(this).css({'border':'7.5px solid red', 'width':'86px','height':'86px'});
-                var img = $(this).attr("src");
+		var img = $(this).attr("src");
                 var cap = $(this).attr("title");
-		var imgSelect = $('<input id="input" type="hidden" value="' + img + '" name="img[]">');
-		var capSelect = $('<input id="input" type="hidden" value="' + cap + '" name="cap[]">');
+                var imgSelect = $('<input id="input" type="hidden" value="' + img + '" name="img[]">');
+                var capSelect = $('<input id="input" type="hidden" value="' + cap + '" name="cap[]">');
                 $("#selected").append(capSelect);
                 $("#selected").append(imgSelect);
         },

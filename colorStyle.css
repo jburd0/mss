@@ -20,6 +20,13 @@ a.nava {
 a.nava:hover {
 	background-color: #EFD6BB;
 }
+a.logout {
+	border: 5px solid #F78181;
+	background-color: #F78181;
+}
+a.logout:hover {
+	border: 5px solid red;
+}
 /* Foot Font Color */
 a.foota {
 	color: #6E6E6E;

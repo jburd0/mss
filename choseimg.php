@@ -3,6 +3,7 @@ session_start();
 ob_start();
 include "header.php";
 ?>
+<script src="./js/status.js"></script>
 <script src="./js/tabs.js"></script>
 <script src="./js/showUpload.js"></script>
 <!--<script src="./js/passwordCheck.js"></script>-->
@@ -19,15 +20,15 @@ if(!$_SESSION['username']) {
 			<div id="adminMenu">
 				<ul class="adminul">
 					<li class="adminli"><a href="#tabUpload" class="admina" tabIndex="1">Upload Image</a></li>
-					<li class="adminli"><a href="#tabDelete" class="admina" tabIndex="2">Delete Image</a></li>
-					<li class="adminli"><a href="#tabSettings" class="admina" tabIndex="3">Account Settings</a></li>
+					<li class="adminli"><a href="#tabDelete" class="admina" tabIndex="2">Delete Image </a></li>
+					<li class="adminli"><a href="#tabSettings" class="admina" tabIndex="3">User Settings</a></li>
 				</ul>
 			</div>
 			<div id="tabUpload" class="tabs">
                                 <h4 class="texth4"><?php echo $uploadstatus; ?></h4>
                                 <form class="adform" method="POST" action="<?php $_SERVER['SELF_PHP']; ?>" enctype="multipart/form-data">
 					<h1 class="texth1">Choose File</h1>
-					<input class="imginput" type="file" value="Choose File" name="file" onchange="readURL(this);"><br />
+					<input class="imginput" type="file" multiple value="Choose File" name="file" onchange="readURL(this);"><br />
 					<img id="previewImg" src="#" alt="your image"  onError="this.onerror=null;this.src='./items/noimage.png';"/><br />
 					<input class="captionInput" type="textarea" placeholder="Caption" name="caption"><br />
 					<div id="submitHold"><input class="adsubmit" type="submit" value="Upload"></div>
@@ -54,10 +55,10 @@ if(!$_SESSION['username']) {
 							$filecon .= file_get_contents($file);
 							//write $filecon to ./items/images.php
 							file_put_contents($file, $filecon);
-							header("Location: index.php");
-							session_destroy();
+							$status = "<div id=\"status\">File uploaded.</div>";
 						} else {
 							$uploadstatus = "<font color='red'>File must be under 5mb</font>";
+							$status = "<div id=\"status\">Problem uploading file please try another.</div>";
 						}
 					}
 				} else {
@@ -82,8 +83,9 @@ if(!$_SESSION['username']) {
 				$delImg = $_POST['img'];
 				$delCaption = $_POST['cap'];
 				$file = "./items/images.php";
-				foreach (array_combine($delImg, $delCaption) as $img => $caption) {
-					$filedata= file_get_contents($file);
+				error_reporting(E_ERROR | E_PARSE);
+				foreach (array_combine($delImg, $delCaption) as $img => $caption) {	
+					$filedata = file_get_contents($file);
 					//get line to delete out of ./items/images.php
 					$line  = "<div id=\"imgHold\"><img class=\"mainimgads\"  src=\"$img\" alt=\"Image preview\" title=\"$caption\"></div>";
 					//replace $line and replace with \n
@@ -94,13 +96,13 @@ if(!$_SESSION['username']) {
 					file_put_contents($file, $filedata);
 					//delete image off server 
 					unlink($img);
-					session_destroy();
+					$status = "<div id=\"status\">File(s) deleted.</div>";
 				}
 				?>
 			</div>
 			<div id="tabSettings" class="tabs">
 				<form class="passwordForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-					<h1 class="texth1">Account Settings</h1>
+					<h1 class="texth1">Settings for <?php echo $postusername; ?></h1>
 					<?php echo $passwordChange; ?>
 					<input class="captionInput" type="password" name="oldp" placeholder="Old Password"><br />
 					<input class="captionInput" type="password" name="newp" placeholder="New Password"><br />
@@ -132,5 +134,6 @@ if(!$_SESSION['username']) {
 		</div>
 	</div>	
 <?php
+echo $status;
 include "footer.php";
 ?>

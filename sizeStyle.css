@@ -1,0 +1,9 @@
+/****************
+Keep width for #logoslide and #aboutslide the same
+*****************/
+#logoslide {
+	width: 120px;
+}
+#aboutslide {
+	width: 120px;
+}

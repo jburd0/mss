@@ -1,0 +1,26 @@
+---------------------------------------------------------
+|				     		     	|
+|	SilverBurd.com (C) 2014	 johnburd19@gmail.com	|
+|				    		     	|
+---------------------------------------------------------
+
+- Simple image uploader.
+
+- Default user name is "mssuser" and password is "fix".
+
+---------------------------------------------------------
+	Change/Create user name and password
+
+1.) Make a directory for your new user name in users/ and create two files "password" and "username".
+
+2.) Edit the user name file to your new user name(Ex. printf "username" > username).
+
+3.) Change the password by editing the password.php in "users/". Change the directory path to '$file' to your new username (Default. ./users/username/password/) and the $pass variable to you new password.
+
+4.) Run the password.php file using:
+
+	php password.php
+
+5.) Delete "mssuser" account in "users/". 
+
+----------------------------------------------------------

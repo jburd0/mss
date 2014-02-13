@@ -6,23 +6,28 @@ include "header.php";
 <?php
 $postusername = htmlentities($_POST['username']);
 $postpassword = htmlentities(md5($_POST['password']));
+settype($postusername, "string");
+settype($postpassword, "string");
+$file = "./users/$postusername/username";
 
 if (!$postusername || !$postpassword) {
 	$loginstatus = "";
 }
 else {
-	require_once"logininfo.php";
-	if (isset($postusername)) {
-		if ($username == $postusername && $password == $postpassword) {
-		$_SESSION['username'] = $username;
-		header("Location: ./choseimg.php");
-		} else {
-			$loginstatus =	"<p class=\"loginStatus\">Incorrect username and/or password.</p>";
+	if (file_exists($file)) {
+		require_once"logininfo.php";
+		if (isset($postusername, $postpassword)) {
+			if ($username == $postusername && $password == $postpassword) {
+				$_SESSION['username'] = $username;
+				header("Location: ./choseimg.php");
+			} else {
+				$loginstatus =	"<p class=\"loginStatus\">Incorrect username and/or password.</p>";
+			}
 		}
+	} else {
+		$loginstatus =	"<p class=\"loginStatus\">Incorrect username and/or password.</p>";
 	}
 }
-echo $username;
-echo $password;
 ?>
 <body>				
 <?php echo "$loginstatus"; ?>

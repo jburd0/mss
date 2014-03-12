@@ -15,16 +15,18 @@ include "header.php";
 				//make empty boxes for images
 				$file = "./items/images.php";
 				$lineCount = count(file($file));
-				if($lineCount[1] == '') {
+				// Sloppy fix on blank line on items/images.php
+				if($lineCount <= 16) {
 					$lineCount--;
 				}
-				if ($lineCount <= 15) {		
+				//echo $lineCount;
+				if($lineCount < 16) {
 					$blankImg = $lineCount;
 					for ($x = $blankImg; $x < 16; $x++) {
 						echo "<div id=\"imgHold\"><img class=\"mainimgads\" src=\"./items/noimage.png\" title=\"\"></div> ";
 					}
 				}
-				?>		
+				?>
 				</div>
 				<div id="mainadtext">
 					<h1 class="adtexth1">Welcome</h1>
